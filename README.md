@@ -24,3 +24,4 @@ module "gci_test" {
   disk_image   = "${data.google_compute_image.coreos_stable.self_link}"
 }
 ```
+# rj-gce_project_1
