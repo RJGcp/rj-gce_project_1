@@ -12,7 +12,7 @@ variable "name_prefix" {
     default = "rj"
 }
 variable "machine_type" {
-    default = "f1-micro"
+    default = "n2-standard-2"
 }
 
 variable "disk_type" {
@@ -20,24 +20,8 @@ variable "disk_type" {
 }
 
 variable "disk_size" {
-    default = "10"
+    default = "50"
 }
 variable "disk_image" {
-    default = "ubuntu-minimal-2004-focal-v20211120"
+    default = "windows-server-20h2-dc-core-v20211115"
 }
-
-# variable "disk_create_local_exec_command_or_fail" {
-#   default = ":"
-# }
-
-# variable "disk_create_local_exec_command_and_continue" {
-#   default = ":"
-# }
-
-# variable "disk_destroy_local_exec_command_or_fail" {
-#   default = ":"
-# }
-
-# variable "disk_destroy_local_exec_command_and_continue" {
-#   default = ":"
-# }

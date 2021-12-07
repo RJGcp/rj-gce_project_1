@@ -21,27 +21,6 @@ resource "google_compute_disk" "instances" {
 
   image = "${var.disk_image}"
 
-#   provisioner "local-exec" {
-#     command    = "${var.disk_create_local_exec_command_or_fail}"
-#     on_failure = "fail"
-#   }
-
-#   provisioner "local-exec" {
-#     command    = "${var.disk_create_local_exec_command_and_continue}"
-#     on_failure = "continue"
-#   }
-
-#   provisioner "local-exec" {
-#     when       = "destroy"
-#     command    = "${var.disk_destroy_local_exec_command_or_fail}"
-#     on_failure = "fail"
-#   }
-
-#   provisioner "local-exec" {
-#     when       = "destroy"
-#     command    = "${var.disk_destroy_local_exec_command_and_continue}"
-#     on_failure = "continue"
-#   }
 }
 
 resource "google_compute_instance" "instances" {
@@ -56,10 +35,6 @@ resource "google_compute_instance" "instances" {
     auto_delete = false
   }
 
-#   metadata {
-#     user-data = "${replace(replace(var.user_data, "$$ZONE", data.google_compute_zones.available.names[count.index]), "$$REGION", var.region)}"
-#   }
-
   network_interface {
     network = "default"
 
@@ -67,7 +42,9 @@ resource "google_compute_instance" "instances" {
       nat_ip = "${google_compute_address.instances.*.address[count.index]}"
     }
   }
-
+  service_account {
+    scopes = ["cloud-platform"]
+  }
   scheduling {
     on_host_maintenance = "MIGRATE"
     automatic_restart   = "true"
