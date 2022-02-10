@@ -9,7 +9,7 @@ projects:
     autoplan:
       when_modified: ["*.tf*"]
       enabled: false
-    workflow: eb
+    workflow: devops
   - name: docker
     dir: ./atlantis/docker
     workspace: docker
@@ -17,7 +17,7 @@ projects:
     autoplan:
       when_modified: ["*.tf*"]
       enabled: false
-    workflow: eb
+    workflow: devops
   - name: atlantis-atlantis-template
     dir: ./atlantis/atlantis/template
     workspace: atlantis-atlantis-template
@@ -25,4 +25,4 @@ projects:
     autoplan:
       when_modified: ["*.tf*"]
       enabled: false
-    workflow: eb
+    workflow: devops
