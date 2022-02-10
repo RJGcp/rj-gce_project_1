@@ -1,0 +1,28 @@
+version: 3
+parallel_plan: true
+automerge: false
+projects:
+  - name: atlantis-atlantis
+    dir: ./
+    workspace: atlantis-atlantis
+    terraform_version: v1.0.3
+    autoplan:
+      when_modified: ["*.tf*"]
+      enabled: false
+    workflow: eb
+  - name: docker
+    dir: ./atlantis/docker
+    workspace: docker
+    terraform_version: v1.0.3
+    autoplan:
+      when_modified: ["*.tf*"]
+      enabled: false
+    workflow: eb
+  - name: atlantis-atlantis-template
+    dir: ./atlantis/atlantis/template
+    workspace: atlantis-atlantis-template
+    terraform_version: v1.0.3
+    autoplan:
+      when_modified: ["*.tf*"]
+      enabled: false
+    workflow: eb
