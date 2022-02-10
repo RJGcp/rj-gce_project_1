@@ -1,10 +1,12 @@
 provider "google" {
   region = var.region
 }
+/*
 data "google_compute_zones" "available" {
   region = var.region
   status = "UP"
 }
+*/
 
 locals {
   is_prod = length(regexall("p", "${var.instance_name}")) > 0
