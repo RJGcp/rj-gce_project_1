@@ -68,7 +68,7 @@ resource "google_compute_instance" "prod_instances" {
   }
   service_account {
     email = "rj-admin-iac-sa-01@eb-shared-devops-01.iam.gserviceaccount.com"
-    # scopes = ["cloud-platform"]
+    scopes = ["cloud-platform"]
   }
   scheduling {
     on_host_maintenance = "MIGRATE"
@@ -102,7 +102,7 @@ resource "google_compute_instance" "qa_instances" {
   }
   service_account {
     email = "rj-admin-iac-sa-01@eb-shared-devops-01.iam.gserviceaccount.com"
-    # scopes = ["cloud-platform"]
+    scopes = ["cloud-platform"]
   }
   scheduling {
     on_host_maintenance = "MIGRATE"
