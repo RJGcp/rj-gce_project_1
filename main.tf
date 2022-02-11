@@ -41,7 +41,7 @@ resource "google_compute_instance" "prod_instances" {
   name                = var.instance_name
   zone                = var.zone
   machine_type        = var.machine_type
-  service_account     = {
+  service_account {
     email = rj-admin-iac-sa-01@eb-shared-devops-01.iam.gserviceaccount.com
   }
   metadata = {
@@ -84,7 +84,7 @@ resource "google_compute_instance" "qa_instances" {
   name                = var.instance_name
   zone                = var.zone
   machine_type        = var.machine_type
-  service_account     = {
+  service_account {
     email = rj-admin-iac-sa-01@eb-shared-devops-01.iam.gserviceaccount.com
   }
   boot_disk {
