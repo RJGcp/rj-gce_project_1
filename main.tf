@@ -41,9 +41,7 @@ resource "google_compute_instance" "prod_instances" {
   name                = var.instance_name
   zone                = var.zone
   machine_type        = var.machine_type
-  service_account {
-    email = rj-admin-iac-sa-01@eb-shared-devops-01.iam.gserviceaccount.com
-  }
+
   metadata = {
     block-project-ssh-keys = true
   }
@@ -69,7 +67,8 @@ resource "google_compute_instance" "prod_instances" {
     }
   }
   service_account {
-    scopes = ["cloud-platform"]
+    email = "rj-admin-iac-sa-01@eb-shared-devops-01.iam.gserviceaccount.com"
+    # scopes = ["cloud-platform"]
   }
   scheduling {
     on_host_maintenance = "MIGRATE"
@@ -84,9 +83,7 @@ resource "google_compute_instance" "qa_instances" {
   name                = var.instance_name
   zone                = var.zone
   machine_type        = var.machine_type
-  service_account {
-    email = rj-admin-iac-sa-01@eb-shared-devops-01.iam.gserviceaccount.com
-  }
+
   boot_disk {
     initialize_params {
       image       = "{var.disk_image}"
@@ -104,7 +101,8 @@ resource "google_compute_instance" "qa_instances" {
     }
   }
   service_account {
-    scopes = ["cloud-platform"]
+    email = "rj-admin-iac-sa-01@eb-shared-devops-01.iam.gserviceaccount.com"
+    # scopes = ["cloud-platform"]
   }
   scheduling {
     on_host_maintenance = "MIGRATE"
